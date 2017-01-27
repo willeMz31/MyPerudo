@@ -45,7 +45,7 @@ public class Test {
 		j2.majSurenchere(2,2);
 		System.out.println(j2.getPseudo() + " a dit " + j2.afficherValeursChoisies());
 		
-		System.out.println("test1");
+		
 
 
 	}
