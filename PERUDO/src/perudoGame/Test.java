@@ -46,6 +46,8 @@ public class Test {
 		System.out.println(j2.getPseudo() + " a dit " + j2.afficherValeursChoisies());
 		
 		
+		test1
+		
 
 
 	}
