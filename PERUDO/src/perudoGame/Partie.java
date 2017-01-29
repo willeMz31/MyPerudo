@@ -203,7 +203,7 @@ public class Partie {
 		a = this.souleverGobelets();
 		for(ArrayList<DePerudo> b : a ){
 			for (DePerudo d : b){
-				if( (d.getPerudo() == "Perudo") || (d.getPerudo().equals(valeurDe)) )
+				if( (d.getPerudo().equals("Perudo")) || (d.getPerudo().equals(valeurDe)) )
 					cpt++;
 			}
 		}
@@ -218,6 +218,27 @@ public class Partie {
 	//rendre dé a J
 	public void recupererDe(Joueur j){
 		j.recupererDe();
+	}
+	
+	//retourne vrai ou faux a l'annonce tout pile
+	public Boolean toutPile(){
+		ArrayList<Integer> valeurs = this.derniereValeurJouee();
+		int i = this.combienDeFois(valeurs.get(1).toString());
+		if (i == valeurs.get(0))
+			return true;
+		else
+			return false;
+	}
+	
+	//retourne vrai si, le joueur precedant mentait, retourne faux si l'accuseur se trompe
+	public Boolean menteur(){
+		ArrayList<Integer> valeurs = this.derniereValeurJouee();
+		int i = this.combienDeFois(valeurs.get(1).toString());
+		if(i >= valeurs.get(0))
+			return false;
+		else
+			return true;
+			
 	}
 
 }

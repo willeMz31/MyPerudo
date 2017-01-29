@@ -100,6 +100,16 @@ public class Test {
 		System.out.println("le dé " + p1.derniereValeurJouee().get(1) + " est présent : " + p1.combienDeFois(p1.derniereValeurJouee().get(1).toString()) + " fois");
 		System.out.println();
 		
+		if( p1.toutPile())
+			System.out.println(p1.getPseudoCouleur(p1.getJoueurCourrant()) + " a dit tout pile et gagne un dé");
+		else
+			System.out.println(p1.getPseudoCouleur(p1.getJoueurCourrant()) + " a dit tout pile et perd un dé");
+	
+		if( p1.menteur())
+			System.out.println(p1.getPseudoCouleur(p1.getJoueurCourrant()) + " a dit menteur (et a raison) et donc " + p1.getPseudoCouleur(p1.connaitreJoueurPrecedant()) + " perd un dé");
+		else
+			System.out.println(p1.getPseudoCouleur(p1.getJoueurCourrant()) + " a dit menteur (et se trompe) donc perd un dé. " + p1.getPseudoCouleur(p1.connaitreJoueurPrecedant()) + " avait raison.");
+		
 		p1.retirerDe(j2);
 		p1.retirerDe(j3);
 		p1.retirerDe(j3);
@@ -118,5 +128,6 @@ public class Test {
 		System.out.println(p1.getPseudoCouleur(j1) + " possède \n" + j1.voirDes());
 		System.out.println(p1.getPseudoCouleur(j2) + " possède \n" + j2.voirDes());
 		System.out.println(p1.getPseudoCouleur(j3) + " possède \n" + j3.voirDes());
+		
 	}
 }
