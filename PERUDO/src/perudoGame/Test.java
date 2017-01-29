@@ -84,7 +84,7 @@ public class Test {
 		System.out.println("Valeurs annoncées par " + p1.connaitreJoueurPrecedant().getPseudo());
 		System.out.println();
 		
-		p1.surencher(7, 4);
+		p1.surencher(7,4);
 		System.out.println("C'est le tour de : " + p1.getJoueurCourrant().getPseudo());
 		System.out.println("Rappel: Les dernières valeurs jouées sont: " + p1.derniereValeurJouee().get(0) + " dés de valeur " + p1.derniereValeurJouee().get(1));
 		System.out.println("Valeurs annoncées par " + p1.connaitreJoueurPrecedant().getPseudo());

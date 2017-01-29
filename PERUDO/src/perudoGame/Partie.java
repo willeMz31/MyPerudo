@@ -166,6 +166,7 @@ public class Partie {
 	}
 	
 	// Methode qui servira a devoiler les dés de tous
+	// Privé car elle ne peut être utilisée que si on veut devoiler tous les dés.
 	private ArrayList<DePerudo> getValeurDesDeJoueur(Joueur j){
 		return j.connaitreValeurDes();
 	}
@@ -191,9 +192,20 @@ public class Partie {
 	//Le joueur courant surencherit et on passe le tour au joueur suivant
 	public void surencher(int nbrDe, int valDe){
 		if((nbrDe > 0 && nbrDe < this.nombreTotalDeDes()) && (valDe > 1 && valDe < 7)){
-			this.joueurCourant.majSurenchere(nbrDe, valDe);
-			this.passerJoueurSuivant();
+			if( this.verifSurencherir(nbrDe, valDe)){
+				this.joueurCourant.majSurenchere(nbrDe, valDe);
+				this.passerJoueurSuivant();
+			}
 		}	
+	}
+	
+	//verifie que la saisie, du joueur courant est bien un surencherissement.
+	private Boolean verifSurencherir(int nbrDe, int valDe){
+		ArrayList<Integer> a = this.derniereValeurJouee();
+		if( (nbrDe > a.get(0) && valDe >= a.get(1)) || (nbrDe >= a.get(0) && valDe > a.get(1)) )
+			return true;
+		else
+			return false;
 	}
 	
 	//savir combien de fois un dé est présent
