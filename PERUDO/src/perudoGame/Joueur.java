@@ -57,6 +57,7 @@ public class Joueur {
 	
 	//Quand on choisit de surencherir, on met a jour les nouvelles valeurs
 	public void majSurenchere(int nbrDe, int valeurDe){
+		this.valeursChoisies.clear();
 		this.valeursChoisies.add(nbrDe);
 		this.valeursChoisies.add(valeurDe);
 	}

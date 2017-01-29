@@ -13,9 +13,9 @@ public class Test {
 		Joueur j2 = new Joueur(2, "Mathieu Valbuena",b1);
 		Joueur j3 = new Joueur(3, "Karim Benzema",g1);
 		
-		Partie p1 = new Partie(1, "Party");
+		Partie p1 = new Partie(1, "Party","Waiting Players");
 		
-		System.out.println("Bienvenu a : " + p1.getNom());
+		System.out.println("Bienvenu a : " + p1.getNom() + ", status: " + p1.getStatus());
 		
 		p1.ajouterJoueur(j1);
 		p1.ajouterJoueur(j2);
@@ -25,9 +25,9 @@ public class Test {
 		
 		System.out.println("Le premier a jouer est : " + p1.getJoueurCourrant().getPseudo());
 		
-		p1.joueurSuivant();
+		p1.passerJoueurSuivant();
 		
-		System.out.println("Le joueur suivant est : " + p1.getJoueurCourrant().getPseudo());
+		System.out.println("Le nouveau joueur currant est : " + p1.getJoueurCourrant().getPseudo());
 		
 		j1.secouerGobelet();
 		j2.secouerGobelet();
@@ -41,10 +41,16 @@ public class Test {
 		System.out.println(j2.getPseudo() + " possÃ¨de \n" + j2.voirDes());
 		System.out.println(j3.getPseudo() + " possÃ¨de \n" + j3.voirDes());
 		
-		// Ã  regarder
+		j1.majSurenchere(3,3);
 		j2.majSurenchere(2,2);
+		j3.majSurenchere(4,4);
+		System.out.println(j1.getPseudo() + " a dit " + j1.afficherValeursChoisies());
 		System.out.println(j2.getPseudo() + " a dit " + j2.afficherValeursChoisies());
-		//this line is added for a LastGitTest
+		System.out.println(j3.getPseudo() + " a dit " + j3.afficherValeursChoisies());
+		
+		System.out.println("C'est le tour de : " + p1.getJoueurCourrant().getPseudo());
+		System.out.println("Rappel: Les dernières valeurs jouées sont: " + p1.derniereValeurJouee().get(0) + " dés de valeur " + p1.derniereValeurJouee().get(1));
+		System.out.println("Valeurs annoncées par " + p1.connaitreJoueurPrecedant().getPseudo());
 	}
 
 }

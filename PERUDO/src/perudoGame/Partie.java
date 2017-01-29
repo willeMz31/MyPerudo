@@ -18,9 +18,10 @@ public class Partie {
 	private ArrayList<Joueur> listeJoueurs;
 	private Joueur joueurCourant;
 	
-	public Partie(int id, String nom){
+	public Partie(int id, String nom, String stat){
 		this.id= id;
 		this.nom = nom;
+		this.status = stat;
 		this.listeJoueurs = new ArrayList<>();
 	}
 	
@@ -95,14 +96,25 @@ public class Partie {
 	
 	//connaitre la valeur surencherie précedement
 	public ArrayList<Integer> derniereValeurJouee(){
-		if( this.listeJoueurs.indexOf(this.joueurCourant) == 0)
-			return this.listeJoueurs.get(this.listeJoueurs.indexOf(this.listeJoueurs.size()-1)).dernieresValeursChoisies();
+		int i = this.listeJoueurs.indexOf(joueurCourant);
+		int s = listeJoueurs.size() - 1 ;
+		if( i == 0 )
+			return this.listeJoueurs.get(s).dernieresValeursChoisies();
 		else	
 			return this.listeJoueurs.get(this.listeJoueurs.indexOf(this.joueurCourant)-1).dernieresValeursChoisies();
 	}
 	
+	public Joueur connaitreJoueurPrecedant(){
+		int i = this.listeJoueurs.indexOf(joueurCourant);
+		int s = listeJoueurs.size() - 1 ;
+		if (i == 0)
+			return this.listeJoueurs.get(s);
+		else
+			return this.listeJoueurs.get(--i);
+	}
+	
 	//passer le tour de annoncer au joueur suivant
-	public void joueurSuivant(){
+	public void passerJoueurSuivant(){
 		int courant;
 		courant = this.listeJoueurs.indexOf(this.joueurCourant);
 		if(courant == (this.listeJoueurs.size()-1))
