@@ -43,5 +43,8 @@ public class Gobelet{
 	public Couleur getCouleur(){
 		return color;
 	}
-	
+
+	public ArrayList<DePerudo> getListeDe() {
+		return listeDe;
+	}	
 }

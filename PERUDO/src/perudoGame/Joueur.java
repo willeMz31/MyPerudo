@@ -43,16 +43,20 @@ public class Joueur {
 		return gobelet.listeDe.size();
 	}
 	
-	//Regarder la valeur de nos d√©s
+	//Regarder la valeur de nos d√©s, ceci est une methode affichage pour le test
 	public String voirDes(){
 		int i=1;
 		String des = new String();
 		des = "";
 		for(String s : this.gobelet.afficherDes()){
-			des = des + "D√© " + i + ": " + s + "\n";
+			des = des + "DÈ " + i + ": " + s + "\n";
 			i++;
 		}
 		return des;
+	}
+	
+	public ArrayList<DePerudo> connaitreValeurDes(){
+		return this.gobelet.getListeDe();
 	}
 	
 	//Quand on choisit de surencherir, on met a jour les nouvelles valeurs
@@ -67,8 +71,13 @@ public class Joueur {
 		return this.valeursChoisies; 
 	}
 	
+	// methode pour tester dans le main
 	public String afficherValeursChoisies(){
-		return (this.valeursChoisies.get(0) + "-" + this.valeursChoisies.get(1) + "  (Format : nombre de d√©s - valeur de d√© Pari√©)" );
+		return (this.valeursChoisies.get(0) + "-" + this.valeursChoisies.get(1) + "  (Format : nombre de dÈs - valeur de dÈ PariÈ)" );
 	}
 	
+	//Afficher couleur joueur
+	public Couleur getCouleur(){
+		return this.gobelet.getCouleur();
+	}
 }

@@ -123,9 +123,69 @@ public class Partie {
 			this.joueurCourant = this.listeJoueurs.get(courant + 1);
 	}
 	
-	//Traitement surencher
-	//public void traitementSurencher(){
-		
-	//}
+	//Est ce que c'est plus judicieux, de faire secouerGobelets 1 par 1
+	//Ou bien faire un for et secouer les gobelets de tout le monde?
+	//(Demander à l'équipe)
+	public void secouerGobelets(Joueur j){
+		j.secouerGobelet();
+	}
+	
+	//je fais la méthode au cas où
+	public void secouerTousGobelets(){
+		for (Joueur j : this.listeJoueurs){
+			j.secouerGobelet();
+		}
+	}
+	
+	//Avoir le nom du joueur
+	public String getNomJoueur(Joueur j){
+		return j.getPseudo();
+	}
+	
+	//Avoir la couleur d'un joueur
+	public Couleur getCouleurJoueur(Joueur j){
+		return j.getCouleur();
+	}
+	
+	//Savoir le nombre de des d'un joueur
+	public int nombreDesJoueur(Joueur j){
+		return j.nombreDes();
+	}
+	
+	//connaitre la valeur des dés du joueur courant
+	public ArrayList<DePerudo> getValeurDesDeJoueurCourant(){
+		return this.joueurCourant.connaitreValeurDes();
+	}
+	
+	// Methode qui servira a devoiler les dés de tous
+	private ArrayList<DePerudo> getValeurDesDeJoueur(Joueur j){
+		return j.connaitreValeurDes();
+	}
+	
+	//devoiler les dés
+	public ArrayList<ArrayList<DePerudo>> souleverGobelets(){
+		ArrayList<ArrayList<DePerudo>> a = new ArrayList<>();
+		for (Joueur j : listeJoueurs){
+			a.add(this.getValeurDesDeJoueur(j));
+		}
+		return a;
+	}
+	
+	//Connaitre combien de dés sont en jeu
+	public int nombreTotalDeDes(){
+		int cpt = 0;
+		for(Joueur j : this.listeJoueurs){
+			cpt = cpt + this.nombreDesJoueur(j);
+		}
+		return cpt;
+	}
+	
+	//Le joueur courant surencherit
+	public void surencher(int nbrDe, int valDe){
+		if((nbrDe > 0 && nbrDe < this.nombreTotalDeDes()) && (valDe > 1 && valDe < 7)){
+			this.joueurCourant.majSurenchere(nbrDe, valDe);
+			this.passerJoueurSuivant();
+		}	
+	}
 
 }
