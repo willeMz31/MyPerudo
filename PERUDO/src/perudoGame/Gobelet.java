@@ -46,5 +46,17 @@ public class Gobelet{
 
 	public ArrayList<DePerudo> getListeDe() {
 		return listeDe;
-	}	
+	}
+	
+	public void retirerDe(){
+		int i = this.listeDe.size();
+		if( i > 0 )
+			this.listeDe.remove(i-1);
+	}
+	
+	public void recupererDe(){
+		int i = this.listeDe.size();
+		if(i < 5)
+			listeDe.add(new DePerudo(this.color));
+	}
 }

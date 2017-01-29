@@ -80,4 +80,14 @@ public class Joueur {
 	public Couleur getCouleur(){
 		return this.gobelet.getCouleur();
 	}
+	
+	//recuperer Dé
+	public void recupererDe(){
+		this.gobelet.recupererDe();
+	}
+	
+	//Perdre dé
+	public void retirerDe(){
+		this.gobelet.retirerDe();
+	}
 }

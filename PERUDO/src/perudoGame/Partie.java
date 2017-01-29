@@ -147,6 +147,14 @@ public class Partie {
 		return j.getCouleur();
 	}
 	
+	//Get pseudo et Couleur sous forme de string
+	public String getPseudoCouleur(Joueur j){
+		String s;
+		s = j.getPseudo();
+		s = "(" + j.getCouleur().getCodeCouleur() +") " + s;
+		return s;
+	}
+	
 	//Savoir le nombre de des d'un joueur
 	public int nombreDesJoueur(Joueur j){
 		return j.nombreDes();
@@ -180,12 +188,36 @@ public class Partie {
 		return cpt;
 	}
 	
-	//Le joueur courant surencherit
+	//Le joueur courant surencherit et on passe le tour au joueur suivant
 	public void surencher(int nbrDe, int valDe){
 		if((nbrDe > 0 && nbrDe < this.nombreTotalDeDes()) && (valDe > 1 && valDe < 7)){
 			this.joueurCourant.majSurenchere(nbrDe, valDe);
 			this.passerJoueurSuivant();
 		}	
+	}
+	
+	//savir combien de fois un dé est présent
+	public int combienDeFois(String valeurDe){
+		int cpt = 0;
+		ArrayList<ArrayList<DePerudo>> a;
+		a = this.souleverGobelets();
+		for(ArrayList<DePerudo> b : a ){
+			for (DePerudo d : b){
+				if( (d.getPerudo() == "Perudo") || (d.getPerudo().equals(valeurDe)) )
+					cpt++;
+			}
+		}
+		return cpt;
+	}
+	
+	//Retirer dé a J
+	public void retirerDe(Joueur j){
+		j.retirerDe();
+	}
+	
+	//rendre dé a J
+	public void recupererDe(Joueur j){
+		j.recupererDe();
 	}
 
 }
